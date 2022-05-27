@@ -1,0 +1,4 @@
+.login__save-button_disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}

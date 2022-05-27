@@ -1,0 +1,16 @@
+.popup__pic-box {
+  display: block;
+  width: max-content;
+  background-color: transparent;
+  margin: 90px auto 0;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;  
+}
+
+@media screen and (max-width: 619px) {
+  .popup__pic-box {
+    margin-top: 136px;
+  }
+}
