@@ -36,5 +36,6 @@ export const getContent = (token) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: 'include',
   }).then(checkResponse);
 };
