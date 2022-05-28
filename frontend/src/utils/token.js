@@ -1,9 +1,14 @@
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
 export const setToken = (token) => {
-  localStorage.setItem("jwt", token);
+  cookies.set("jwt", token);
+  console.log(cookies.get("jwt"));
 };
 
-export const getToken = () => localStorage.getItem("jwt");
+export const getToken = () => cookies.get("jwt");
 
 export const removeToken = () => {
-  localStorage.removeItem("jwt");
+  cookies.remove("jwt");
 };

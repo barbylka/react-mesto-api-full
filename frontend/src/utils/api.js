@@ -15,7 +15,6 @@ class Api {
   getUserInfo() {
     return fetch(this._baseUrl + "/users/me", {
       headers: {
-        Authorization: this._headers.authorization,
         "Content-Type": this._headers.contentType,
       },
     }).then((res) => this._checkResponse(res));
@@ -24,7 +23,6 @@ class Api {
   getInitialCards() {
     return fetch(this._baseUrl + "/cards", {
       headers: {
-        Authorization: this._headers.authorization,
         "Content-Type": this._headers.contentType,
       },
     }).then((res) => this._checkResponse(res));
@@ -34,7 +32,6 @@ class Api {
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
       headers: {
-        Authorization: this._headers.authorization,
         "Content-Type": this._headers.contentType,
       },
       body: JSON.stringify({
@@ -48,7 +45,6 @@ class Api {
     return fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",
       headers: {
-        Authorization: this._headers.authorization,
         "Content-Type": this._headers.contentType,
       },
       body: JSON.stringify({
@@ -61,7 +57,6 @@ class Api {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
       headers: {
-        Authorization: this._headers.authorization,
         "Content-Type": this._headers.contentType,
       },
       body: JSON.stringify({
@@ -75,7 +70,6 @@ class Api {
     return fetch(this._baseUrl + `/cards/${cardId}`, {
       method: "DELETE",
       headers: {
-        Authorization: this._headers.authorization,
         "Content-Type": this._headers.contentType,
       },
     }).then((res) => this._checkResponse(res));
@@ -86,7 +80,6 @@ class Api {
       return fetch(this._baseUrl + `/cards/${cardId}/likes`, {
         method: "PUT",
         headers: {
-          Authorization: this._headers.authorization,
           "Content-Type": this._headers.contentType,
         },
       }).then((res) => this._checkResponse(res));
@@ -94,7 +87,6 @@ class Api {
       return fetch(this._baseUrl + `/cards/${cardId}/likes`, {
         method: "DELETE",
         headers: {
-          Authorization: this._headers.authorization,
           "Content-Type": this._headers.contentType,
         },
       }).then((res) => this._checkResponse(res));
