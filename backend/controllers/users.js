@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
@@ -8,6 +9,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const { DUPLICATE_MONGOOSE_ERROR, SALT_ROUNDS } = require('../utils/constants');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const checkInputs = (req, res, next) => {
   const value = !req.body.email || !req.body.password;
@@ -132,7 +134,7 @@ const login = async (req, res, next) => {
       if (!user) {
         throw new UnauthorizedError('Неправильные почта или пароль');
       } else {
-        const token = await jwt.sign({ _id: user._id }, 'super-strong-secret', { expiresIn: '7d' });
+        const token = await jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
         res
           .cookie('jwt', token, {
             maxAge: 3600000 * 24 * 7,
