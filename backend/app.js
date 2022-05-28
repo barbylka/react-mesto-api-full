@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const process = require('process');
 const helmet = require('helmet');
+const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const router = require('./routes/routes');
@@ -16,6 +17,11 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cookieParser());
+
+app.use(cors({
+  origin: "https://mestopage.nomoredomains.xyz",
+  credentials: true,
+}));
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
