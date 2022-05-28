@@ -44,6 +44,7 @@ const App = () => {
         if (data.data) {
           setUserEmail(data.data.email);
           handleLoggedIn();
+          console.log(loggedIn);
           navigate("/");
         }
       })
