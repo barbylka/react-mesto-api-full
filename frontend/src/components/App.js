@@ -41,17 +41,22 @@ const App = () => {
   const checkAuth = (token) => {
     getContent(token)
       .then((data) => {
+        console.log('data');
+        console.log(data);
         if (data.data) {
           setUserEmail(data.data.email);
           handleLoggedIn();
           console.log(loggedIn);
           navigate("/");
         }
+        console.log('elif');
       })
       .catch((err) => console.log(`Пользователь не авторизован ${err}`));
   };
   const tokenCheck = () => {
     const jwt = getToken();
+    console.log('Check');
+    console.log(jwt);
     if (jwt) {
       checkAuth(jwt);
     } else {
