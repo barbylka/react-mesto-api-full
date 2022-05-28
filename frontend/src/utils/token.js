@@ -7,8 +7,6 @@ export const setToken = (token) => {
 };
 
 export const getToken = () => {
-  console.log('get token');
-  console.log(cookies.get("jwt"));
   return cookies.get("jwt");
 };
 
