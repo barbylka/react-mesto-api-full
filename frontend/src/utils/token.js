@@ -7,8 +7,8 @@ export const setToken = (token) => {
 };
 
 export const getToken = () => {
-  cookies.get("jwt");
   console.log(cookies.get("jwt"));
+  return cookies.get("jwt");
 };
 
 export const removeToken = () => {
