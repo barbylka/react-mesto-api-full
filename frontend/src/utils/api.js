@@ -17,6 +17,7 @@ class Api {
       headers: {
         "Content-Type": this._headers.contentType,
       },
+      credentials: 'include',
     }).then((res) => this._checkResponse(res));
   }
 
@@ -25,6 +26,7 @@ class Api {
       headers: {
         "Content-Type": this._headers.contentType,
       },
+      credentials: 'include',
     }).then((res) => this._checkResponse(res));
   }
 
@@ -34,6 +36,7 @@ class Api {
       headers: {
         "Content-Type": this._headers.contentType,
       },
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -47,6 +50,7 @@ class Api {
       headers: {
         "Content-Type": this._headers.contentType,
       },
+      credentials: 'include',
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -59,6 +63,7 @@ class Api {
       headers: {
         "Content-Type": this._headers.contentType,
       },
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -72,6 +77,7 @@ class Api {
       headers: {
         "Content-Type": this._headers.contentType,
       },
+      credentials: 'include',
     }).then((res) => this._checkResponse(res));
   }
 
@@ -82,6 +88,7 @@ class Api {
         headers: {
           "Content-Type": this._headers.contentType,
         },
+        credentials: 'include',
       }).then((res) => this._checkResponse(res));
     } else {
       return fetch(this._baseUrl + `/cards/${cardId}/likes`, {
@@ -89,6 +96,7 @@ class Api {
         headers: {
           "Content-Type": this._headers.contentType,
         },
+        credentials: 'include',
       }).then((res) => this._checkResponse(res));
     }
   }
