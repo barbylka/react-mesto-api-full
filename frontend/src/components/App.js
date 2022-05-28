@@ -43,8 +43,8 @@ const App = () => {
       .then((data) => {
         console.log('data');
         console.log(data);
-        if (data.data) {
-          setUserEmail(data.data.email);
+        if (data) {
+          setUserEmail(data.email);
           handleLoggedIn();
           console.log(loggedIn);
           navigate("/");
