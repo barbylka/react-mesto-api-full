@@ -4,9 +4,9 @@ import { useValidation } from "../utils/validation";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const avatarRef = React.useRef(null);
-  const avatarValidate = useValidation();
+  const avatarValidate = useValidation(true);
   const saveButtonClassName = `popup__save-button 
-  ${avatarValidate.isWrong && "popup__save-button_disabled"}`;
+  ${(avatarValidate.isWrong || (avatarRef.current.value === "")) && "popup__save-button_disabled"}`;
 
   React.useEffect(() => {
     avatarRef.current.value = "";
@@ -45,7 +45,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
           </span>
         </label>
       </fieldset>
-      <button disabled={avatarValidate.isWrong} className={saveButtonClassName} type="submit">
+      <button disabled={avatarValidate.isWrong || (avatarRef.current.value === "")} className={saveButtonClassName} type="submit">
         Сохранить
       </button>
     </PopupWithForm>

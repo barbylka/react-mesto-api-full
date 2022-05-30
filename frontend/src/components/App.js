@@ -45,24 +45,14 @@ const App = () => {
           handleLoggedIn();
           navigate("/");
         }
-        // TODO console
       })
       .catch((err) => {
         console.log(`Пользователь не авторизован ${err}`);
         navigate("/sign-in");
       });
   };
-  // const tokenCheck = () => {
-  //   const jwt = getToken();
-  //   if (jwt) {
-  //     checkAuth(jwt);
-  //   } else {
-  //     navigate("/sign-in");
-  //   }
-  // };
 
   React.useEffect(() => {
-    // tokenCheck();
     checkAuth();
   }, []);
 
@@ -93,7 +83,6 @@ const App = () => {
     authorize(password, email)
       .then((res) => {
         if (res) {
-          // setToken(res.token);
           checkAuth(res.token);
         }
       })
@@ -109,8 +98,6 @@ const App = () => {
   //Users' sign out
   const signOut = () => {
     signout();
-    //ssign-out get fetch
-    // removeToken();
     setUserEmail("");
     setLoggedIn(false);
   };

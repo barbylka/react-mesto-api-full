@@ -1,7 +1,7 @@
 import React from "react";
 
-export const useValidation = () => {
-  const [isWrong, setIsWrong] = React.useState(true);
+export const useValidation = (valid) => {
+  const [isWrong, setIsWrong] = React.useState(valid);
   const [errorMessage, setErrorMessage] = React.useState("");
 
   const onBlur = (evt) => {

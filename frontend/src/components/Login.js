@@ -6,8 +6,8 @@ const Login = ({ onLogin }) => {
     password: "",
     email: "",
   });
-  const passwordValid = useValidation();
-  const emailValid = useValidation();
+  const passwordValid = useValidation(true);
+  const emailValid = useValidation(true);
   const saveButtonClassName = `login__save-button 
   ${(passwordValid.isWrong || emailValid.isWrong) && "login__save-button_disabled"}`;
 

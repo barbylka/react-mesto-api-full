@@ -7,8 +7,8 @@ const Register = ({ onRegister }) => {
     password: "",
     email: "",
   });
-  const passwordValid = useValidation();
-  const emailValid = useValidation();
+  const passwordValid = useValidation(true);
+  const emailValid = useValidation(true);
   const saveButtonClassName = `register__save-button 
   ${(passwordValid.isWrong || emailValid.isWrong) && "register__save-button_disabled"}`;
 

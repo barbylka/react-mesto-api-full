@@ -7,10 +7,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const nameValid = useValidation();
-  const descriptionValid = useValidation();
+  const nameValid = useValidation(false);
+  const descriptionValid = useValidation(false);
   const saveButtonClassName = `popup__save-button
-  ${(nameValid.isWrong || descriptionValid.isWrong) && "popup__save-button_disabled"}`;
+  ${(nameValid.isWrong || descriptionValid.isWrong || (name === currentUser.name && description === currentUser.about)) && "popup__save-button_disabled"}`;
 
   function handleChangeName(e) {
     setName(e.target.value);
@@ -60,7 +60,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             maxLength="40"
           />
           <span className="popup__text-error name-input-error">
-            {nameValid.isWrong && nameValid.errorMessage}
+            {nameValid.isWrong && nameValid.errorMessage || (name === currentUser.name && description === currentUser.about)}
           </span>
         </label>
         <label className="popup__field">
