@@ -37,7 +37,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
             required
             placeholder="Ссылка на новый аватар"
             className="popup__text popup__text_type_avatar"
-            onBlur={avatarValidate.onBlur}
+            onChange={avatarValidate.onBlur}
             name="avatar"
           />
           <span className="popup__text-error avatar-input-error">

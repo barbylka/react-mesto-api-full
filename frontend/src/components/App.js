@@ -6,7 +6,6 @@ import Login from "./Login";
 import Register from "./Register";
 import { register, authorize, getContent } from "../auth";
 import { InfoTooltip } from "./InfoTooltip";
-import { setToken, getToken, removeToken } from "../utils/token";
 import Main from "./Main";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -38,28 +37,33 @@ const App = () => {
     setLoggedIn(true);
   };
 
-  const checkAuth = (token) => {
-    getContent(token)
+  const checkAuth = () => {
+    getContent()
       .then((data) => {
         if (data) {
           setUserEmail(data.email);
           handleLoggedIn();
           navigate("/");
         }
+        // TODO console
       })
-      .catch((err) => console.log(`Пользователь не авторизован ${err}`));
+      .catch((err) => {
+        console.log(`Пользователь не авторизован ${err}`);
+        navigate("/sign-in");
+      });
   };
-  const tokenCheck = () => {
-    const jwt = getToken();
-    if (jwt) {
-      checkAuth(jwt);
-    } else {
-      navigate("/sign-in");
-    }
-  };
+  // const tokenCheck = () => {
+  //   const jwt = getToken();
+  //   if (jwt) {
+  //     checkAuth(jwt);
+  //   } else {
+  //     navigate("/sign-in");
+  //   }
+  // };
 
   React.useEffect(() => {
-    tokenCheck();
+    // tokenCheck();
+    checkAuth();
   }, []);
 
   //Users' registration
@@ -89,7 +93,7 @@ const App = () => {
     authorize(password, email)
       .then((res) => {
         if (res) {
-          setToken(res.token);
+          // setToken(res.token);
           checkAuth(res.token);
         }
       })
@@ -104,7 +108,8 @@ const App = () => {
 
   //Users' sign out
   const signOut = () => {
-    removeToken();
+    // /ssign-out get fetch
+    // removeToken();
     setUserEmail("");
     setLoggedIn(false);
   };

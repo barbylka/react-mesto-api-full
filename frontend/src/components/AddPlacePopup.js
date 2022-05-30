@@ -48,12 +48,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
             required
             placeholder="Название"
             value={name}
-            onChange={handleChangeName}
+            onChange={(e) => {
+              handleChangeName(e);
+              nameValid.onBlur(e);
+            }}
             className="popup__text popup__text_type_place"
             name="name"
             minLength="2"
             maxLength="30"
-            onBlur={nameValid.onBlur}
           />
           <span className="popup__text-error place-input-error">
             {nameValid.isWrong && nameValid.errorMessage}
@@ -66,10 +68,12 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
             required
             placeholder="Ссылка на картинку"
             value={link}
-            onChange={handleChangeLink}
+            onChange={(e) => {
+              handleChangeLink(e);
+              linkValid.onBlur(e);
+            }}
             className="popup__text popup__text_type_link"
             name="link"
-            onBlur={linkValid.onBlur}
           />
           <span className="popup__text-error link-input-error">
             {linkValid.isWrong && linkValid.errorMessage}

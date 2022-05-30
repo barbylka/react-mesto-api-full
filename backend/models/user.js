@@ -8,21 +8,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 30,
-    default: 'Жак-Ив Кусто'
+    default: 'Жак-Ив Кусто',
   },
   about: {
     type: String,
     minlength: 2,
     maxlength: 30,
-    default: 'Исследователь'
+    default: 'Исследователь',
   },
   avatar: {
     type: String,
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
     validate: {
       validator: (avatar) => isURL(avatar),
-      message: 'Неправильный формат ссылки'
-    }
+      message: 'Неправильный формат ссылки',
+    },
   },
   email: {
     type: String,
@@ -30,14 +30,14 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: (email) => isEmail(email),
-      message: 'Неправильный формат ссылки'
-    }
+      message: 'Неправильный формат ссылки',
+    },
   },
   password: {
     type: String,
     required: true,
-    select: false
-  }
+    select: false,
+  },
 });
 
 userSchema.statics.findUserByCredentials = async function (email, password) {

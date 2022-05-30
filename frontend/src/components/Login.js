@@ -36,10 +36,12 @@ const Login = ({ onLogin }) => {
               required
               placeholder="Email"
               value={data.email}
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+                emailValid.onBlur(e);
+              }}
               className="login__text login__text_type_email"
               name="email"
-              onBlur={emailValid.onBlur}
             />
             <span className="login__text-error email-input-error">
               {emailValid.isWrong && emailValid.errorMessage}
@@ -52,11 +54,13 @@ const Login = ({ onLogin }) => {
               required
               placeholder="Пароль"
               value={data.password}
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+                passwordValid.onBlur(e);
+              }}
               className="login__text login__text_type_password"
               name="password"
               minLength="4"
-              onBlur={passwordValid.onBlur}
             />
             <span className="login__text-error password-input-error">
               {passwordValid.isWrong && passwordValid.errorMessage}

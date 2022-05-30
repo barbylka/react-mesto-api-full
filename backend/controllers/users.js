@@ -8,6 +8,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const { DUPLICATE_MONGOOSE_ERROR, SALT_ROUNDS } = require('../utils/constants');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 const checkInputs = (req, res, next) => {
@@ -49,11 +50,11 @@ const postUser = async (req, res, next) => {
     try {
       if (validator.isEmail(req.body.email)) {
         const {
-          name, about, avatar, email, password
+          name, about, avatar, email, password,
         } = req.body;
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
         let user = await User.create({
-          name, about, avatar, email, password: hashedPassword
+          name, about, avatar, email, password: hashedPassword,
         });
         user = user.toObject();
         delete user.password;
@@ -79,8 +80,8 @@ const updateUser = async (req, res, next) => {
       { name, about },
       {
         new: true,
-        runValidators: true
-      }
+        runValidators: true,
+      },
     );
     if (user) {
       res.status(200).send(user);
@@ -106,8 +107,8 @@ const updateAvatar = async (req, res, next) => {
       { avatar },
       {
         new: true,
-        runValidators: true
-      }
+        runValidators: true,
+      },
     );
     if (user) {
       res.status(200).send(user);
@@ -138,7 +139,7 @@ const login = async (req, res, next) => {
           .cookie('jwt', token, {
             maxAge: 3600000 * 24 * 7,
             httpOnly: true,
-            sameSite: true
+            sameSite: true,
           })
           .status(200).send({ token });
       }
@@ -168,5 +169,5 @@ module.exports = {
   updateUser,
   updateAvatar,
   login,
-  getCurrentUser
+  getCurrentUser,
 };

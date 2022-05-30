@@ -20,7 +20,7 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: "https://mestopage.nomoredomains.xyz",
+  origin: 'https://mestopage.nomoredomains.xyz',
   credentials: true,
 }));
 
@@ -40,7 +40,7 @@ app.get('/crash-test', () => {
 app.post('/signin', express.json(), celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    password: Joi.string().required()
+    password: Joi.string().required(),
   }),
 }), login);
 app.post('/signup', express.json(), celebrate({
@@ -49,7 +49,7 @@ app.post('/signup', express.json(), celebrate({
     password: Joi.string().required(),
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(urlRegEx)
+    avatar: Joi.string().pattern(urlRegEx),
   }),
 }), postUser);
 

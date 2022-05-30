@@ -4,7 +4,9 @@
     "no-underscore-dangle": [
       "error",
       {
-        "allow": ["_id"]
+        "allow": [
+          "_id"
+        ]
       }
     ],
     "prefer-destructuring": [
@@ -19,7 +21,6 @@
       {
         "args": "none"
       }
-    ],
-    "comma-dangle": "off"
+    ]
   }
 }

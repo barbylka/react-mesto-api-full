@@ -50,12 +50,14 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             required
             placeholder="Имя"
             value={name || ""}
-            onChange={handleChangeName}
+            onChange={(e) => {
+              handleChangeName(e);
+              nameValid.onBlur(e);
+            }}
             className="popup__text popup__text_type_name"
             name="name"
             minLength="2"
             maxLength="40"
-            onBlur={nameValid.onBlur}
           />
           <span className="popup__text-error name-input-error">
             {nameValid.isWrong && nameValid.errorMessage}
@@ -68,12 +70,14 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             required
             placeholder="О себе"
             value={description || ""}
-            onChange={handleChangeDescription}
+            onChange={(e) => {
+              handleChangeDescription(e);
+              descriptionValid.onBlur(e);
+            }}
             className="popup__text popup__text_type_description"
             name="about"
             minLength="2"
             maxLength="200"
-            onBlur={descriptionValid.onBlur}
           />
           <span className="popup__text-error desc-input-error">
             {descriptionValid.isWrong && descriptionValid.errorMessage}

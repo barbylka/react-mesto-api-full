@@ -5,5 +5,5 @@ const SALT_ROUNDS = 10;
 module.exports = {
   urlRegEx,
   DUPLICATE_MONGOOSE_ERROR,
-  SALT_ROUNDS
+  SALT_ROUNDS,
 };

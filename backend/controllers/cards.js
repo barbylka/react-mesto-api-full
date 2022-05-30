@@ -55,7 +55,7 @@ const likeCard = async (req, res, next) => {
       .findByIdAndUpdate(
         req.params.cardId,
         { $addToSet: { likes: req.user._id } },
-        { new: true }
+        { new: true },
       )
       .populate(['owner', 'likes']);
     if (card) {
@@ -78,7 +78,7 @@ const dislikeCard = async (req, res, next) => {
       .findByIdAndUpdate(
         req.params.cardId,
         { $pull: { likes: req.user._id } },
-        { new: true }
+        { new: true },
       )
       .populate(['owner', 'likes']);
     if (card) {
@@ -100,5 +100,5 @@ module.exports = {
   postCard,
   deleteCard,
   likeCard,
-  dislikeCard
+  dislikeCard,
 };
