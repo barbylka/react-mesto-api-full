@@ -83,7 +83,7 @@ const App = () => {
     authorize(password, email)
       .then((res) => {
         if (res) {
-          checkAuth(res.token);
+          checkAuth();
         }
       })
       .catch((err) => {
