@@ -52,6 +52,9 @@ app.post('/signup', express.json(), celebrate({
     avatar: Joi.string().pattern(urlRegEx),
   }),
 }), postUser);
+app.get('/signout', (req, res) => {
+  res.status(200).clearCookie('jwt').send({ message: 'Выход' });
+});
 
 app.use(helmet());
 app.use(auth);

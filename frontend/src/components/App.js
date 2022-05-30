@@ -4,7 +4,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import Header from "./Header";
 import Login from "./Login";
 import Register from "./Register";
-import { register, authorize, getContent } from "../auth";
+import { register, authorize, getContent, signout } from "../auth";
 import { InfoTooltip } from "./InfoTooltip";
 import Main from "./Main";
 import EditProfilePopup from "./EditProfilePopup";
@@ -108,7 +108,8 @@ const App = () => {
 
   //Users' sign out
   const signOut = () => {
-    // /ssign-out get fetch
+    signout();
+    //ssign-out get fetch
     // removeToken();
     setUserEmail("");
     setLoggedIn(false);

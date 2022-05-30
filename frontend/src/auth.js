@@ -41,3 +41,14 @@ export const getContent = () => {
     credentials: 'include',
   }).then(checkResponse);
 };
+
+export const signout = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    credentials: 'include',
+  }).then(checkResponse);
+};
