@@ -17,7 +17,8 @@ const postCard = async (req, res, next) => {
     const { name, link } = req.body;
     const _id = req.user._id;
     const newCard = await Card.create({ name, link, owner: _id });
-    res.status(201).send(newCard);
+    const card = await Card.findById(newCard._id).populate('owner');
+    res.status(201).send(card);
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(new BadRequestError('Переданы некорректные данные карточки1'));
