@@ -20,7 +20,7 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://mestopage.nomoredomains.xyz',
+  origin: ['https://mestopage.nomoredomains.xyz', 'http://mestopage.nomoredomains.xyz'],
   credentials: true,
 }));
 
